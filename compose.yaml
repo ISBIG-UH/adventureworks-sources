@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  adventure-works-core-mysql:
+    image: mysql:8.0
+    container_name: adventure-works-core-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    ports:
+      - "${MYSQL_PORT_MAP}:3306"
+    volumes:
+      - ./sources/core/data:/var/lib/mysql-files/seed
+      - ./sources/core/scripts:/docker-entrypoint-initdb.d
+    command: --default-authentication-plugin=caching_sha2_password
+  
+  adventure-works-reviews-api:
+    image: python:3.12
+    volumes:
+      - ./sources/reviews:/app
+    working_dir: /app
+    ports: 
+      - "8000:8000"
+    command: ["sh", "./run.sh"]
+
+  adventure-works-employees-files:
+    image: python:3.12
+    volumes:
+      - ./sources/employees:/app
+    working_dir: /app
+    ports: 
+      - "8080:8080"
+    command: ["python3", "-m", "http.server", "8080"]
+
+networks:
+  default:
+    name: ${DOCKER_NETWORK}
