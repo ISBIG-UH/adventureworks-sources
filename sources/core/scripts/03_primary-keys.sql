@@ -199,23 +199,14 @@ ALTER TABLE Vendor
 -- HumanResources - Primary Keys
 -- ******************************************************
 
-ALTER TABLE Department
-    ADD PRIMARY KEY (DepartmentId);
 
 ALTER TABLE Employee
     ADD PRIMARY KEY (BusinessEntityId);
 
-ALTER TABLE EmployeeDepartmentHistory
-    ADD PRIMARY KEY (BusinessEntityId, StartDate, DepartmentId, ShiftId);
-
-ALTER TABLE EmployeePayHistory
-    ADD PRIMARY KEY (BusinessEntityId, RateChangeDate);
 
 ALTER TABLE JobCandidate
     ADD PRIMARY KEY (JobCandidateId);
 
-ALTER TABLE Shift
-    ADD PRIMARY KEY (ShiftId);
 
 
 
@@ -248,8 +239,6 @@ MODIFY COLUMN CreditCardId INT NOT NULL AUTO_INCREMENT;
 ALTER TABLE CurrencyRate
 MODIFY COLUMN CurrencyRateId INT NOT NULL AUTO_INCREMENT;
 
-ALTER TABLE Department
-MODIFY COLUMN DepartmentId SMALLINT NOT NULL AUTO_INCREMENT;
 
 
 ALTER TABLE Location
@@ -279,9 +268,6 @@ MODIFY COLUMN IllustrationId INT NOT NULL AUTO_INCREMENT;
 ALTER TABLE ProductPhoto
 MODIFY COLUMN ProductPhotoId INT NOT NULL AUTO_INCREMENT;
 
-
-ALTER TABLE Shift
-MODIFY COLUMN ShiftID TINYINT UNSIGNED NOT NULL AUTO_INCREMENT;
 
 ALTER TABLE ShipMethod
 MODIFY COLUMN ShipMethodId INT NOT NULL AUTO_INCREMENT;

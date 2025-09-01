@@ -717,12 +717,7 @@ CREATE TABLE Vendor (
 -- ******************************************************
 
 
-CREATE TABLE Department(
-    DepartmentId SMALLINT NOT NULL,
-    Name VARCHAR(50) NOT NULL,
-    GroupName VARCHAR(50) NOT NULL,
-    ModifiedDate DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
-);
+
 CREATE TABLE Employee (
     BusinessEntityId INT NOT NULL,
     NationalIdNumber VARCHAR(15) NOT NULL UNIQUE,
@@ -749,36 +744,9 @@ CREATE TABLE Employee (
         SickLeaveHours BETWEEN 0 AND 120
     )
 );
-CREATE TABLE EmployeeDepartmentHistory (
-    BusinessEntityId INT NOT NULL,
-    DepartmentId SMALLINT NOT NULL,
-    ShiftId TINYINT UNSIGNED NOT NULL,
-    StartDate DATE NOT NULL,
-    EndDate DATE,
-    ModifiedDate DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    CONSTRAINT Chk_EmployeeDepartmentHistory_EndDate CHECK (
-        EndDate >= StartDate
-        OR EndDate IS NULL
-    )
-);
-CREATE TABLE EmployeePayHistory(
-    BusinessEntityId INT NOT NULL,
-    RateChangeDate DATETIME NOT NULL,
-    Rate DECIMAL(19, 4) NOT NULL DEFAULT 0.00,
-    PayFrequency TINYINT NOT NULL,
-    ModifiedDate DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    CONSTRAINT Chk_EmployeePayHistory_Rate CHECK (Rate >= 0.00)
-);
 CREATE TABLE JobCandidate (
     JobCandidateId INT NOT NULL,
     BusinessEntityId INT NULL,
     Resume TEXT NULL,
-    ModifiedDate DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
-);
-CREATE TABLE Shift (
-    ShiftID TINYINT UNSIGNED NOT NULL,
-    Name VARCHAR(50) NOT NULL,
-    StartTime TIME NOT NULL,
-    EndTime TIME NOT NULL,
     ModifiedDate DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
 );

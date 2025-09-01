@@ -163,17 +163,6 @@ ALTER TABLE Employee
     ADD CONSTRAINT FK_Employee_Person_BusinessEntityId FOREIGN KEY (BusinessEntityId)
         REFERENCES Person(BusinessEntityId);
 
-ALTER TABLE EmployeeDepartmentHistory 
-    ADD CONSTRAINT FK_EmployeeDepartmentHistory_Department_DepartmentId FOREIGN KEY (DepartmentId)
-        REFERENCES Department(DepartmentId),
-    ADD CONSTRAINT FK_EmployeeDepartmentHistory_Employee_BusinessEntityId FOREIGN KEY (BusinessEntityId)
-        REFERENCES Employee(BusinessEntityId),
-    ADD CONSTRAINT FK_EmployeeDepartmentHistory_Shift_ShiftId FOREIGN KEY (ShiftId)
-        REFERENCES Shift(ShiftId);
-
-ALTER TABLE EmployeePayHistory 
-    ADD CONSTRAINT FK_EmployeePayHistory_Employee_BusinessEntityId FOREIGN KEY (BusinessEntityId)
-        REFERENCES Employee(BusinessEntityId);
 
 ALTER TABLE JobCandidate 
     ADD CONSTRAINT FK_JobCandidate_Employee_BusinessEntityId FOREIGN KEY (BusinessEntityId)

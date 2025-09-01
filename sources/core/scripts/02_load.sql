@@ -606,14 +606,6 @@ SET
 -- HumanResources - Data loading
 -- ******************************************************
 
-LOAD DATA INFILE '/var/lib/mysql-files/seed/Department.csv'
-INTO TABLE Department 
-CHARACTER SET utf8mb4
-FIELDS TERMINATED BY '\t'
-ENCLOSED BY '"'
-LINES TERMINATED BY '\n';
-
-
 
 
     LOAD DATA INFILE '/var/lib/mysql-files/seed/Employee.csv'
@@ -632,24 +624,6 @@ SET
 	OrganizationLevel = NULLIF(@OrganizationLevel, '');
 
 
-LOAD DATA INFILE '/var/lib/mysql-files/seed/EmployeeDepartmentHistory.csv'
-INTO TABLE EmployeeDepartmentHistory
-CHARACTER SET utf8mb4
-FIELDS TERMINATED BY '\t'
-ENCLOSED BY '"'
-LINES TERMINATED BY '\n'
-(
-BusinessEntityId, DepartmentId, ShiftId, StartDate, @EndDate, ModifiedDate
-)
-SET 
-	EndDate = NULLIF(@EndDate, '');
-
-LOAD DATA INFILE '/var/lib/mysql-files/seed/EmployeePayHistory.csv'
-INTO TABLE EmployeePayHistory
-CHARACTER SET utf8mb4
-FIELDS TERMINATED BY '\t'
-ENCLOSED BY '"'
-LINES TERMINATED BY '\n';
 
 
 LOAD DATA INFILE '/var/lib/mysql-files/seed/JobCandidate.csv'
@@ -666,12 +640,5 @@ SET
 	Resume = NULLIF(@Resume, '');
 
 
-
-LOAD DATA INFILE '/var/lib/mysql-files/seed/Shift.csv'
-INTO TABLE Shift
-CHARACTER SET utf8mb4
-FIELDS TERMINATED BY '\t'
-ENCLOSED BY '"'
-LINES TERMINATED BY '\n';
 
 
