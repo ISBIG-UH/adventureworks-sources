@@ -35,11 +35,11 @@ class DataService:
         if res[0] <= 0:
             self.con.execute(
             """
-                COPY users FROM 'generator/data/output/users.csv' (AUTO_DETECT TRUE, DELIMITER ',');
+                COPY users FROM './generator/data/output/users.csv' (AUTO_DETECT TRUE, DELIMITER ',');
 
-                COPY stores FROM 'generator/data/output/stores.csv' (AUTO_DETECT TRUE, DELIMITER ',');
+                COPY stores FROM './generator/data/output/stores.csv' (AUTO_DETECT TRUE, DELIMITER ',');
 
-                COPY reviews FROM 'generator/data/output/reviews.csv' (AUTO_DETECT TRUE, DELIMITER ',');          
+                COPY reviews FROM './generator/data/output/reviews.csv' (AUTO_DETECT TRUE, DELIMITER ',');          
             """)
 
     def get_users(self, size: int, page: int,):
